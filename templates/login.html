@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <p>{{validator}}</p>
+    <form action="/login" method="post">
+        <label for="email">Email</label>
+        <input type="email" placeholder="email" name="email" maxlength="22" minlength="4" class="title" onkeydown="text()">
+
+        <label for="password" >password</label>
+        <input type="password" name="password" placeholder="password" maxlength="22" minlength="8" class='bdy' onkeydown="text()">
+
+        <input type="submit" value="Login" class="sub">
+    </form>
+    <a href="/register">Click here if you dont have an account</a>
+</body>
+<script>
+    var inp1=document.querySelector('.title'),
+        inp2= document.querySelector('.bdy'),
+        submit = document.querySelector('.sub');
+    function text() {
+       if ((inp1.value).includes('\"') || (inp2.value).includes('\"')){
+            submit.disabled=true;
+            alert("Invalid input \" ")
+       }else{
+            submit.disabled=false
+       } 
+    }
+</script>
+</html>

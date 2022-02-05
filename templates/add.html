@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Page</title>
+</head>
+<body>
+    <form action="/add" method="post">
+
+        <input type="text" name="title" placeholder="header" onkeydown="text()" class="title" maxlength="50">
+        <br>
+        <textarea name="note"  cols="100" rows="30" placeholder="Add note here" class="bdy" onkeydown="text()" ></textarea>
+        <br>
+        <input type="submit" value="add" class="sub">
+    </form>
+</body>
+<script>
+    var inp1=document.querySelector('.title'),
+        inp2= document.querySelector('.bdy'),
+        submit = document.querySelector('.sub');
+    function text() {
+       if ((inp1.value).includes('\"') || (inp2.value).includes('\"')){
+            submit.disabled=true;
+            alert("Invalid input \" ")
+       }else{
+            submit.disabled=false
+       } 
+    }
+</script>
+</html>

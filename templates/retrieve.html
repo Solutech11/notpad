@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{item.Title}}</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <div class="preview">
+        <div>
+            <h2>{{item.Title}}</h2>
+            <h3>{{item.Date}}</h3>
+        </div>
+        <button class="edtbtn" onclick="views()">Edit</button>
+        <!-- <button>edit</button> -->
+
+        <pre>{{item.notes}}</pre>
+    </div>
+
+    <!-- the input  -->
+    <div class="edit" style="display: none;">
+        <button class="previewbtn" onclick="views()">Preview</button>
+
+        <!-- the form  -->
+        <form action="/retrieve/{{item.id}}" method="post">
+            <input type="text" name="title" placeholder="header" onkeydown="text()" class="title" maxlength="50" value="{{item.Title}}">
+            <br>
+            <textarea name="body" cols="100" rows="30" placeholder="Add note here" class="bdy" onkeydown="text()">{{item.notes}}</textarea>
+            <input type="submit" value="update" class="sub">
+        </form>
+    </div>
+
+
+</body>
+<script>
+    var inp1=document.querySelector('.title'),
+        inp2= document.querySelector('.bdy'),
+        submit = document.querySelector('.sub'),
+        editbtn= document.querySelector('.edtbtn'),
+        previewview= document.querySelector('.preview'),
+        prevBtn =document.querySelector('.previewbtn'),
+        editview = document.querySelector('.edit');
+
+    
+        
+    function views() {
+        if (previewview.style.display != 'none'){
+            console.log('ok');
+            previewview.style.display='none';
+            editview.style.display='unset';
+        } else{
+            previewview.style.display='unset';
+            editview.style.display='none';
+        }
+    }
+
+    function text() {
+       if ((inp1.value).includes('\"') || (inp2.value).includes('\"')){
+            submit.disabled=true;
+            alert("Invalid input \" ")
+       }else{
+            submit.disabled=false
+       } 
+    }
+</script>
+</html>

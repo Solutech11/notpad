@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{user.name}} List</title>
+</head>
+<body style="padding: 0%; margin: 0%;">
+    <!-- <div style="display: flex; flex-direction: row; justify-content: space-between;position: fixed; width: 100%; padding-right: 40px; background-color: aqua;z-index: 3;"> -->
+        <div style="display: flex; flex-direction: row;justify-content: space-between; width: 100%; background-color: aqua; padding-bottom: 10px; position: fixed;">
+            <h1 style="margin-left: 10px;">ST-Notes</h1>
+            <div style="margin-right: 20px;">
+                <h3>{{user.name}}</h3>    
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    <!-- </div> -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div >
+    {% if notes|length ==0 %}
+
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 100px;">
+            <h3>You have no notes yet</h3>
+            <a href='/add' style="text-decoration: none; ">Click here to add</a>
+        </div>
+    {% else %}
+        <a href="/add">Add notes</a>
+        
+        {% for list in notes|reverse %}
+        
+            <a href='/retrieve/{{list.id}}' style="text-decoration: none;">
+                <div style="padding: 5px;">
+                    <div style="display: flex;flex-direction: row; justify-content: space-between;">
+                        <h3>{{list.Title}}</h3>
+                        <p>{{list.Date}} <a href="/delete/{{list.id}}" style="text-decoration: none; font-size: 35px; margin-left: 10px;">x</a></p>    
+                    </div>
+                    <!-- <br> -->
+                    <pre>{{list.notes|truncate(20,True,'...')}}</pre>
+                    
+                </div>
+            </a>
+        {% endfor %}
+    {% endif %}
+</div>
+    
+
+</body>
+</html>

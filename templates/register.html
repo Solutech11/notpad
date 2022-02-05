@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <p>{{msg}}</p>
+    <form action="/register" method="post">
+        <label for="name"> Full name</label>
+        <input type="text" name="name" placeholder="Full name e.g John Doe" minlength="6" maxlength="30" class="inp1" onkeydown="text()">
+
+        <br>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="email" minlength='5' maxlength="35" class="inp2" onkeydown="text()">
+
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="password" minlength="8" maxlength="15" class="inp3" onkeydown="text()">
+
+        <input type="submit" class="sub">
+    </form>
+</body>
+<script>
+    var inp1= document.querySelector('.inp1'),
+        inp2= document.querySelector('.inp2'),
+        inp3= document.querySelector('.inp3'),
+        submit= document.querySelector('.sub');
+
+    function text (){
+       if ((inp1.value).includes('\"') || (inp2.value).includes('\"') || (inp3.value).includes('\"') ){
+            submit.disabled=true;
+            alert("Invalid input \" ")
+       }else{
+            submit.disabled=false
+       } 
+    }
+</script>
+</html>
